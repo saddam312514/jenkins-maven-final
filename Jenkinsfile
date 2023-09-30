@@ -1,20 +1,28 @@
+
+
 pipeline {
-    agent any 
-    stages {
-        stage('clone Reepository & clean ') { 
-            steps {
-                sh "mvn clean compile"
+      agent any
+      stages {
+            stage('Init') {
+                  steps {
+                        echo 'Hi, this is Anshul from LevelUp360'
+                        echo 'We are Starting the Testing'
+                  }
             }
-        }
-        stage('Test') { 
-            steps {
-               sh "mvn test"
+            stage('Build') {
+                  steps {
+                        echo 'Building Sample Maven Project'
+                  }
             }
-        }
-        stage('Deploy') { 
-            steps {
-                sh "mvn package"
+            stage('Deploy') {
+                  steps {
+                        echo "Deploying in Staging Area"
+                  }
             }
-        }
-    }
+            stage('Deploy Production') {
+                  steps {
+                        echo "Deploying in Production Area"
+                  }
+            }
+      }
 }
